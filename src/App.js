@@ -1,8 +1,9 @@
+import SignIn from "./comonents/SignIn";
 
 function App() {
   return (
     <div className="text-3xl font-bold text-green-800">
-      Namaste,this is netflix-gpt
+      <SignIn></SignIn>
     </div>
   );
 }
