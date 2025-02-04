@@ -15,7 +15,6 @@ const SignIn = () => {
             </div>
             <div className="password"></div>
             <div  className="sign indeterminate:">
-                <button></button>
             </div>
         </div>
       </div>
