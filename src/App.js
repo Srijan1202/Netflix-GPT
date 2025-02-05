@@ -1,10 +1,8 @@
-import SignIn from "./comonents/SignIn";
+import Body from "./comonents/Body";
 
 function App() {
   return (
-    <div className="text-3xl font-bold text-green-800">
-      <SignIn></SignIn>
-    </div>
+    <Body/>
   );
 }
 
