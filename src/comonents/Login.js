@@ -25,7 +25,14 @@ const Login = () => {
           action=""
           className="bg-black absolute w-2/6 py-6 px-14 mx-auto right-0 left-0 bg-opacity-70"
         >
-          <h1 className="text-3xl text-white font-bold pb-4 my-4  ">Sign In</h1>
+          <h1 className="text-3xl text-white font-bold pb-4 my-4  ">{signin==="Sign In" ?"Sign In":"Sign Up"}</h1>
+          {signin === "Sign Out" && 
+          <input
+            type="text"
+            placeholder="Name"
+            className="text-white bg-gray-950 p-4 my-4 rounded-sm opacity-70 border-white w-full"
+          />}
+
           <input
             type="text"
             placeholder="Email or mobile number"
@@ -36,19 +43,20 @@ const Login = () => {
             placeholder="Password"
             className="text-white bg-gray-950 p-4 my-4 rounded-sm opacity-70 border-white w-full"
           />
+
+
           <button
             className="bg-[#e50914] hover:bg-[#c11119] p-2 mt-2 rounded-sm border-white w-full text-white font-bold"
             type="button"
-            onClick={changesign}
           >
-            {signin}
+            {signin==="Sign In" ?"Sign In":"Sign Up"}
           </button>
           <div className="text-white mt-4  mb-4">Forgot Pasword</div>
 
           <label htmlFor="" className="text-white ">
             <input type="checkbox" className="h-4 w-4" /> Remember me
           </label>
-          <div className="text-red-600 mt-4">New to Netflix? Sign up now.</div>
+          <div className="text-red-600 mt-4 cursor-pointer" onClick={changesign}>{signin==="Sign In" ?"New to Netflix? Sign up now.":"Already have a account Sign In now"}</div>
           <div className="text-white text-sm mt-4">
             This page is protected by Google reCAPTCHA to ensure you're not a
             bot. Learn more.
