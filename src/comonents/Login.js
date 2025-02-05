@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useRef } from "react";
 import Header from "./Header";
 import { useState } from "react";
+import Validate from "../utils/Validate";
 
 const Login = () => {
+
+  const email= useRef(null);
+  const password= useRef(null);
   
   const [signin, setsignin] = useState("Sign In");
+  const [checker,setchecker]=useState("valid");
 
   const changesign = () => {
     setsignin(signin === "Sign In" ? "Sign Out" : "Sign In");
+  };
+
+  function check() {
+    const res=Validate(email.current.value,password.current.value);
+
+    if(res!=="valid"){
+      setchecker(res);
+    }
   };
 
   return (
@@ -34,20 +47,27 @@ const Login = () => {
           />}
 
           <input
+            ref={email}
             type="text"
             placeholder="Email or mobile number"
             className="text-white bg-gray-950 p-4 my-4 rounded-sm opacity-70 border-white w-full"
           />
+
+          {/* {checker!=="valid" && <div className="text-red-600">{checker}</div>} */}
+          
           <input
+            ref={password}
             type="password"
             placeholder="Password"
             className="text-white bg-gray-950 p-4 my-4 rounded-sm opacity-70 border-white w-full"
           />
 
+          {checker!=="valid" && <div className="text-red-600">{checker}</div>}
 
           <button
             className="bg-[#e50914] hover:bg-[#c11119] p-2 mt-2 rounded-sm border-white w-full text-white font-bold"
             type="button"
+            onClick={check}
           >
             {signin==="Sign In" ?"Sign In":"Sign Up"}
           </button>
