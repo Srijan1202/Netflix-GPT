@@ -20,7 +20,9 @@ const Login = () => {
 
     if(res!=="valid"){
       setchecker(res);
+      // return;
     }
+
   };
 
   return (
