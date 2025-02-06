@@ -24,7 +24,7 @@ const Login = () => {
   };
 
   return (
-    // <body className="bg-black">
+    // <div className="bg-black ">
       <div>
         <div className="absolute -z-10">
           <img
@@ -83,7 +83,7 @@ const Login = () => {
           </div>
         </form>
       </div>
-    // </body>
+    // </div>
   );
 };
 
