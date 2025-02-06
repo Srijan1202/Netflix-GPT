@@ -6,11 +6,13 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import {auth} from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
+import { updateProfile } from "firebase/auth";
 
 
 const Login = () => {
   const email = useRef(null);
   const password = useRef(null);
+  const names = useRef(null);
   const navigate = useNavigate();
 
   const [signin, setsignin] = useState("Sign In");
@@ -26,6 +28,7 @@ const Login = () => {
     if (res !== "valid") {
       setchecker(res);
       return;
+
     }
 
     if (signin === "Sign Up") {
@@ -37,6 +40,16 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
+
+          updateProfile(auth.currentUser, {
+            displayName: names.current.value, photoURL: "https://example.com/jane-q-user/profile.jpg"
+          }).then(() => {
+            // Profile updated!
+            // ...
+          }).catch((error) => {
+            // An error occurred
+            // ...
+          });
           console.log(user);
           navigate("/Browse")
         })
@@ -83,7 +96,7 @@ const Login = () => {
           {signin === "Sign In" ? "Sign In" : "Sign Up"}
         </h1>
         {signin === "Sign Up" && (
-          <input
+          <input ref={names}
             type="text"
             placeholder="Name"
             className="text-white bg-gray-950 p-4 my-4 rounded-sm opacity-70 border-white w-full"
