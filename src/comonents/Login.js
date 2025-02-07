@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { use, useRef } from "react";
 import Header from "./Header";
 import { useState } from "react";
 import Validate from "../utils/Validate";
@@ -7,9 +7,12 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import {auth} from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
+import { useDispatch } from 'react-redux'
+import { addUser } from "../utils/userSlice";
 
 
 const Login = () => {
+  const dispatch=useDispatch();
   const email = useRef(null);
   const password = useRef(null);
   const names = useRef(null);
@@ -40,11 +43,13 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
-
           updateProfile(auth.currentUser, {
-            displayName: names.current.value, photoURL: "https://example.com/jane-q-user/profile.jpg"
+            displayName: names.current.value, photoURL: "https://avatars.githubusercontent.com/u/142401395?s=40&v=4"
           }).then(() => {
             // Profile updated!
+
+            const {uid,email,displayName,photoURL} = auth.currentUser;
+          dispatch(addUser({uid:uid,email:email,displayName:displayName,photoURL:photoURL}));
             // ...
           }).catch((error) => {
             // An error occurred
