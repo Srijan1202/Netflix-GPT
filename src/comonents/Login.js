@@ -8,6 +8,7 @@ import {auth} from "../utils/firebase";
 import { updateProfile } from "firebase/auth";
 import { useDispatch } from 'react-redux'
 import { addUser } from "../utils/userSlice";
+import {BGIMG,PHOIMG} from "../utils/constants";
 
 
 const Login = () => {
@@ -43,7 +44,7 @@ const Login = () => {
           // Signed up
           const user = userCredential.user;
           updateProfile(auth.currentUser, {
-            displayName: names.current.value, photoURL: "https://avatars.githubusercontent.com/u/142401395?s=40&v=4"
+            displayName: names.current.value, photoURL: PHOIMG
           }).then(() => {
             // Profile updated!
 
@@ -86,7 +87,7 @@ const Login = () => {
       <div className="absolute -z-10">
         <img
           className="opacity-60 w-[100vw] h-[100vh]"
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/fb5cb900-0cb6-4728-beb5-579b9af98fdd/web/IN-en-20250127-TRIFECTA-perspective_cf66f5a3-d894-4185-9106-5f45502fc387_small.jpg"
+          src={BGIMG}
           alt="img"
         />
       </div>

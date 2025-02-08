@@ -15,7 +15,7 @@ const Header = () => {
 
 
   useEffect(() => {
-      onAuthStateChanged(auth, (user) => {
+      const unsubscribe=onAuthStateChanged(auth, (user) => {
           if (user) {
             const {uid,email,displayName,photoURL} = user;
             navigate("/Browse")
@@ -27,16 +27,14 @@ const Header = () => {
             navigate("/")
           }
         });
+        return ()=>unsubscribe();
   }, [])
-
-
-const Navigate= useNavigate();
 
 const user= useSelector(state=>state.user);
 
   const handlesignout = () => {
     signOut(auth).then(() => {
-      // Sign-out successful.
+
     }).catch((error) => {
       console.log(error);
     });
