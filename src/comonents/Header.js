@@ -40,9 +40,11 @@ const user= useSelector(state=>state.user);
     });
   }
   return (
-    <div className=' bg-gradient-to-b from-black flex justify-between items-center h-28'>
-      <img src={img} alt=""  className='w-48 ml-40 bg-gradient-to-b'/>
-      {user && <div className='flex justify-end mr-10 '>
+    <div className=' absolute  w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex flex-row justify-between items-center'>
+      {/* bg-gradient-to-b from-black flex justify-between items-center h-28 */}
+      <img src={img} alt=""  className='w-40 ml-6'/>
+      {user && 
+      <div className='flex justify-end mr-10 '>
         <img className="h-14"src={user.photoURL} alt="img" />
         {console.log(user.photoURL)}
 

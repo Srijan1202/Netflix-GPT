@@ -94,7 +94,7 @@ const Login = () => {
       <Header />
       <form
         action=""
-        className="bg-black absolute w-2/6 py-6 px-14 mx-auto right-0 left-0 bg-opacity-70"
+        className="bg-black absolute w-2/6 py-6 px-14 mx-auto right-0 left-0 bg-opacity-70 mt-32"
       >
         <h1 className="text-3xl text-white font-bold pb-4 my-4  ">
           {signin === "Sign In" ? "Sign In" : "Sign Up"}

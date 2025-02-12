@@ -5,11 +5,9 @@ const Videocontainer = ({ id }) => {
   const trailer=useFetchMovies({ id });
 
   return (
-    <div className="text-red-600">
-      <iframe className="absolute left-0 top-0 h-full w-full -z-10"
-        width="560"
-        height="315"  
-        src={`https://www.youtube.com/embed/${trailer}`}
+    <div className="absolute text-red-600 w-screen  -z-10">
+      <iframe className=" left-0 top-0 w-screen aspect-video "
+        src={`https://www.youtube.com/embed/${trailer}?&autoplay=1&mute=1`}
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerPolicy="strict-origin-when-cross-origin"
