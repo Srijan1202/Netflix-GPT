@@ -1,12 +1,12 @@
 import React from 'react'
 import Header from './Header'
-import Usefetchapi from '../hooks/Usefetchapi'
+import useFetchApi from '../hooks/useFetchApi'
 import Maincontainer from './Maincontainer'
 import Secondarycontainer from './Secondarycontainer'
 
 const Browse = () => {
 
-  Usefetchapi();
+  useFetchApi();
   
   return (
     <div>

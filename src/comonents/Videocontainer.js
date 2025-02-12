@@ -1,34 +1,8 @@
-import { useEffect,useState } from "react";
-import { movieurl, options } from "../utils/constants";
-import { useDispatch, useSelector } from "react-redux";
-import { addtrailer } from "../utils/movieSlice";
+import useFetchMovies from "../hooks/useFetchMovies";
 
 const Videocontainer = ({ id }) => {
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    fetchvideo();
-  }, []);
-
-  const trailer = useSelector(store=>store.movies?.trailer);
-
-  const fetchvideo = async () => {
-    const data = await fetch(movieurl + id + "/videos", options);
-    const json = await data.json();
-    // console.log(json.results);
-    const res = json.results
-      .filter((item) => item.type === "Trailer")
-      .map((item) => item.key);
-
-      if(!res.length === 0){
-        return;
-      }
-
-      dispatch(addtrailer(res[0]));
-
-
-  };
+  const trailer=useFetchMovies({ id });
 
   return (
     <div className="text-red-600">
