@@ -11,3 +11,5 @@ export const options = {
     Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MDYzYTAyYThjOTk3NTA3YzFjMzhhMDljYTUwMjQyYSIsIm5iZiI6MTczODkyNDM2Ny4yNjMsInN1YiI6IjY3YTVlMTRmYWNhOTFkYTRiYTg1ZGViZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.He4tb6LC7DXG0QqsVbCjLw0NS2ImX7cdwuRGsTGrFLk'
   }
 };
+
+export const img_cmd="https://image.tmdb.org/t/p/original";
