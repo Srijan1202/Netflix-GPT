@@ -1,12 +1,17 @@
 import { useEffect,useState } from "react";
 import { movieurl, options } from "../utils/constants";
+import { useDispatch, useSelector } from "react-redux";
+import { addtrailer } from "../utils/movieSlice";
 
 const Videocontainer = ({ id }) => {
+
+  const dispatch = useDispatch();
+
   useEffect(() => {
     fetchvideo();
   }, []);
 
-  const [trailer, setTrailer] = useState(null); 
+  const trailer = useSelector(store=>store.movies?.trailer);
 
   const fetchvideo = async () => {
     const data = await fetch(movieurl + id + "/videos", options);
@@ -19,7 +24,10 @@ const Videocontainer = ({ id }) => {
       if(!res.length === 0){
         return;
       }
-      setTrailer(res[0]);
+
+      dispatch(addtrailer(res[0]));
+
+
   };
 
   return (
@@ -29,7 +37,7 @@ const Videocontainer = ({ id }) => {
         height="315"  
         src={`https://www.youtube.com/embed/${trailer}`}
         title="YouTube video player"
-        // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerPolicy="strict-origin-when-cross-origin"
       ></iframe>
     </div>
