@@ -3,6 +3,7 @@ export const BGIMG="https://assets.nflxext.com/ffe/siteui/vlv3/fb5cb900-0cb6-472
 export const PHOIMG="https://avatars.githubusercontent.com/u/142401395?s=40&v=4"
 
 export const url = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1';
+export const movieurl="https://api.themoviedb.org/3/movie/";
 export const options = {
   method: 'GET',
   headers: {
