@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 const Secondarycontainer = () => {
   const movie = useSelector((store) => store.movies);
 
-  if (!movie || !movie.nowmovies || !movie.popularmovies || !movie.topratedmovies) {
+  if (!movie || !movie.nowmovies || !movie.popularmovies || !movie.topratedmovies || !movie.upcomingmovies) {
     return <div className="text-white">Loading...</div>;
     
   }
@@ -15,7 +15,7 @@ const Secondarycontainer = () => {
       <Movielist title="Now Playing Movies" movies={movie.nowmovies} />
       <Movielist title="Popular Movies" movies={movie.popularmovies} />
       <Movielist title="Top Rated Movies" movies={movie.topratedmovies} />
-      <Movielist title="Now Playing Movies" movies={movie.nowmovies} />
+      <Movielist title="Upcoming Movies" movies={movie.upcomingmovies} />
     </div>
   );
 };
