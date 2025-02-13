@@ -6,7 +6,7 @@ const Moviecard = ({movie}) => {
     
   return (
     <div className='pl-10'>
-        <div className=' text-white w-44 relative p-2'>
+        <div className=' text-white w-44 relative p-2 -mx-5'>
             <img src={img_cmd+poster} alt="img" />
         </div>
     </div>
