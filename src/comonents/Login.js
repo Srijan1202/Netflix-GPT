@@ -4,19 +4,17 @@ import { useState } from "react";
 import Validate from "../utils/Validate";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import {auth} from "../utils/firebase";
+import { auth } from "../utils/firebase";
 import { updateProfile } from "firebase/auth";
-import { useDispatch } from 'react-redux'
+import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
-import {BGIMG,PHOIMG} from "../utils/constants";
-
+import { BGIMG, PHOIMG } from "../utils/constants";
 
 const Login = () => {
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
   const email = useRef(null);
   const password = useRef(null);
   const names = useRef(null);
-
 
   const [signin, setsignin] = useState("Sign In");
   const [checker, setchecker] = useState("valid");
@@ -31,7 +29,6 @@ const Login = () => {
     if (res !== "valid") {
       setchecker(res);
       return;
-
     }
 
     if (signin === "Sign Up") {
@@ -44,29 +41,41 @@ const Login = () => {
           // Signed up
           const user = userCredential.user;
           updateProfile(auth.currentUser, {
-            displayName: names.current.value, photoURL: PHOIMG
-          }).then(() => {
-            // Profile updated!
+            displayName: names.current.value,
+            photoURL: PHOIMG,
+          })
+            .then(() => {
+              // Profile updated!
 
-            const {uid,email,displayName,photoURL} = auth.currentUser;
-          dispatch(addUser({uid:uid,email:email,displayName:displayName,photoURL:photoURL}));
-            // ...
-          }).catch((error) => {
-            // An error occurred
-            // ...
-          });
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
+              // ...
+            })
+            .catch((error) => {
+              // An error occurred
+              // ...
+            });
           console.log(user);
-          
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
 
-          setchecker(errorCode,errorMessage);
-          
+          setchecker(errorCode, errorMessage);
         });
     } else {
-      signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
@@ -75,8 +84,7 @@ const Login = () => {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          setchecker(errorCode,errorMessage);
-
+          setchecker(errorCode, errorMessage);
         });
     }
   }
@@ -85,11 +93,7 @@ const Login = () => {
     // <div className="bg-black ">
     <div>
       <div className="absolute -z-10">
-        <img
-          className="opacity-60 w-[100vw] h-[100vh]"
-          src={BGIMG}
-          alt="img"
-        />
+        <img className="opacity-60 w-[100vw] h-[100vh]" src={BGIMG} alt="img" />
       </div>
       <Header />
       <form
@@ -100,7 +104,8 @@ const Login = () => {
           {signin === "Sign In" ? "Sign In" : "Sign Up"}
         </h1>
         {signin === "Sign Up" && (
-          <input ref={names}
+          <input
+            ref={names}
             type="text"
             placeholder="Name"
             className="text-white bg-gray-950 p-4 my-4 rounded-sm opacity-70 border-white w-full"

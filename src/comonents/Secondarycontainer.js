@@ -1,13 +1,18 @@
-import React from 'react'
-import Movielist from './Movielist'
-import { useSelector } from 'react-redux'
+import React from "react";
+import Movielist from "./Movielist";
+import { useSelector } from "react-redux";
 
 const Secondarycontainer = () => {
   const movie = useSelector((store) => store.movies);
 
-  if (!movie || !movie.nowmovies || !movie.popularmovies || !movie.topratedmovies || !movie.upcomingmovies) {
+  if (
+    !movie ||
+    !movie.nowmovies ||
+    !movie.popularmovies ||
+    !movie.topratedmovies ||
+    !movie.upcomingmovies
+  ) {
     return <div className="text-white">Loading...</div>;
-    
   }
 
   return (
