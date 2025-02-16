@@ -8,11 +8,15 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
+import { toggleHandler } from "../utils/toggleSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const handletoggle = () => {
+    dispatch(toggleHandler());
+  };
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -51,19 +55,25 @@ const Header = () => {
       <img src={img} alt="" className="w-40 ml-6" />
       {user && (
         <div className="flex justify-end mr-10 ">
-          <img className="h-14" src={user.photoURL} alt="img" />
-          {console.log(user.photoURL)}
-
+          <button
+            className=" border-2 border-red-600 p-2 mx-6 text-red-600 font-bold rounded-md  hover:bg-gradient-to-b from-red-600 "
+            onClick={handletoggle()}
+          >
+            GPTsearch
+          </button>
           <button
             className="text-red-600 ml-10 font-bold border-2 border-red-600 rounded-md px-4 py-1 hover:bg-gradient-to-b from-red-700"
             onClick={handlesignout}
           >
             Sign Out
           </button>
+
+          <img className="h-14" src={user.photoURL} alt="img" />
+          {console.log(user.photoURL)}
+
         </div>
       )}
     </div>
   );
 };
-
 export default Header;

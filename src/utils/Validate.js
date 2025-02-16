@@ -1,4 +1,4 @@
-import React from "react";
+
 
 const Validate = (email, password) => {
   if (!/^[^@]+@[^@]+\.[^@]+$/.test(email)) {

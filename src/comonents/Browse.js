@@ -6,8 +6,13 @@ import Secondarycontainer from "./Secondarycontainer";
 import useFetchPopular from "../hooks/useFetchPopular";
 import useFetchTopRated from "../hooks/useFetchTopRated";
 import useFetchUpcoming from "../hooks/useFetchUpcoming";
+import SearchPage from "./SearchPage";
+
 
 const Browse = () => {
+
+
+
   useFetchApi();
 
   useFetchPopular();
@@ -19,6 +24,10 @@ const Browse = () => {
   return (
     <div>
       <Header />
+      {
+      <SearchPage />
+      }
+
       <Maincontainer />
       <Secondarycontainer />
     </div>
