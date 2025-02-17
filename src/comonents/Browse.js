@@ -1,4 +1,4 @@
-import React from "react";
+import React, { use, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Header from "./Header";
 import useFetchApi from "../hooks/useFetchApi";
@@ -15,7 +15,7 @@ const Browse = () => {
   useFetchTopRated();
   useFetchUpcoming();
 
-  const isToggled = useSelector((state) => state.toggle); 
+  const isToggled = useSelector((state) => state.toggle.toggle);
 
   return (
     <div>

@@ -13,7 +13,7 @@ const SearchPage = () => {
 
   }
   return (
-    <div className='absolute flex flex-col justify-center items-center h-5/6 w-screen z-10' onClick={Close}>
+    <div className='absolute flex flex-col justify-center items-center h-screen w-screen z-10' onClick={Close}>
         <Gptsearch/>
         <GptRecommend/>
     </div>
