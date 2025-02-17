@@ -1,4 +1,5 @@
-// import React, { use } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 import Header from "./Header";
 import useFetchApi from "../hooks/useFetchApi";
 import Maincontainer from "./Maincontainer";
@@ -8,26 +9,18 @@ import useFetchTopRated from "../hooks/useFetchTopRated";
 import useFetchUpcoming from "../hooks/useFetchUpcoming";
 import SearchPage from "./SearchPage";
 
-
 const Browse = () => {
-
-
-
   useFetchApi();
-
   useFetchPopular();
-
   useFetchTopRated();
-
   useFetchUpcoming();
+
+  const isToggled = useSelector((state) => state.toggle); 
 
   return (
     <div>
       <Header />
-      {
-      <SearchPage />
-      }
-
+      {isToggled && <SearchPage />}
       <Maincontainer />
       <Secondarycontainer />
     </div>

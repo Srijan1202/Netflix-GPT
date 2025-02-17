@@ -17,6 +17,8 @@ const Header = () => {
   const handletoggle = () => {
     dispatch(toggleHandler());
   };
+
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -56,8 +58,8 @@ const Header = () => {
       {user && (
         <div className="flex justify-end mr-10 ">
           <button
-            className=" border-2 border-red-600 p-2 mx-6 text-red-600 font-bold rounded-md  hover:bg-gradient-to-b from-red-600 "
-            onClick={handletoggle()}
+            className=" border-2 border-red-600 p-2 text-red-600 font-bold rounded-md  hover:bg-gradient-to-b from-red-600 "
+            onClick={handletoggle}
           >
             GPTsearch
           </button>
@@ -68,8 +70,10 @@ const Header = () => {
             Sign Out
           </button>
 
-          <img className="h-14" src={user.photoURL} alt="img" />
+          <div className="border-red-600 border-2 rounded-full h-14 w-14 flex justify-center items-center ml-10">
+          <img className="rounded-full h-14 w-14" src={user.photoURL} alt="img" />
           {console.log(user.photoURL)}
+          </div>
 
         </div>
       )}
