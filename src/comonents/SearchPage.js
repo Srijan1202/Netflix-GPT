@@ -4,6 +4,7 @@ import Gptsearch from './Gptsearch';
 import GptRecommend from './GptRecommend';
 import { toggleHandler } from '../utils/toggleSlice';
 
+
 const SearchPage = () => {
   const toggleref = useRef(null);
   const dispatch = useDispatch();

@@ -7,7 +7,7 @@ const Maincontainer = () => {
   const data = useSelector((state) => state?.movies?.nowmovies);
 
   if (!data) return <div>loading...</div>;
-  console.log(data[0]?.original_title);
+  
 
   return (
     <div>

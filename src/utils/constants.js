@@ -26,3 +26,6 @@ export const topRated_url =
 
 export const upcoming_url =
   "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1";
+
+
+export const Supported_languages = [{identifier:"en",name:"English"},{identifier:"hin",name:"Hindi"},{identifier:"spa",name:"Spanish"},{identifier:"ger",name:"German"}];
