@@ -9,7 +9,7 @@ const useFetchMovies = ({ id }) => {
   const fetchvideo = async () => {
     const data = await fetch(movieurl + id + "/videos", options);
     const json = await data.json();
-    // console.log(json.results);
+  
     const res = json.results
       .filter((item) => item.type === "Trailer")
       .map((item) => item.key);
