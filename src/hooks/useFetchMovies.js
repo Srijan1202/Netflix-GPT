@@ -6,6 +6,8 @@ import { addtrailer } from "../utils/movieSlice";
 const useFetchMovies = ({ id }) => {
   const dispatch = useDispatch();
 
+  const nowplaying = useSelector((store) => store.movies?.nowplaying);
+
   const fetchvideo = async () => {
     const data = await fetch(movieurl + id + "/videos", options);
     const json = await data.json();
@@ -22,7 +24,7 @@ const useFetchMovies = ({ id }) => {
   };
 
   useEffect(() => {
-    fetchvideo();
+    !nowplaying && fetchvideo();
   }, []);
 
   const trailer = useSelector((store) => store.movies?.trailer);
