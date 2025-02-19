@@ -49,9 +49,9 @@ const Gptsearch = () => {
 
     const data = await Promise.all(promisedata);
 
-    const firstObjects = data.map((arr) => arr[0]);
+    // const firstObjects = data.map((arr) => arr[0]);
 
-    dispatch(addGptMovies({movieNames:movies, moviesRes:firstObjects}));
+    dispatch(addGptMovies({movieNames:movies, moviesRes:data}));
   };
 
   return (

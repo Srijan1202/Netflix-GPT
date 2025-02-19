@@ -78,7 +78,7 @@ const Login = () => {
       )
         .then((userCredential) => {
           // Signed in
-          const user = userCredential.user;
+          
 
         })
         .catch((error) => {
@@ -93,12 +93,12 @@ const Login = () => {
     // <div className="bg-black ">
     <div>
       <div className="absolute -z-10">
-        <img className="opacity-60 w-[100vw] h-[100vh]" src={BGIMG} alt="img" />
+        <img className=" opacity-60 w-[100vw] h-[100vh] object-coverx`" src={BGIMG} alt="img" />
       </div>
       <Header />
       <form
         action=""
-        className="bg-black absolute w-2/6 py-6 px-14 mx-auto right-0 left-0 bg-opacity-70 mt-32"
+        className="bg-black absolute md:w-2/6 py-6 px-14 mx-3 md:mx-auto right-0 left-0 bg-opacity-70 mt-32"
       >
         <h1 className="text-3xl text-white font-bold pb-4 my-4  ">
           {signin === "Sign In" ? "Sign In" : "Sign Up"}
