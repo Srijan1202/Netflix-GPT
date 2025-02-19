@@ -1,4 +1,4 @@
-import Body from "./comonents/Body";
+import Body from "./components/Body";
 import { Provider } from "react-redux";
 import Appstore from "./utils/Appstore";
 
