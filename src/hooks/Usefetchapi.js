@@ -7,15 +7,18 @@ const useFetchApi = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetchapi();
-  }, []);
+    const fetchapi = async () => {
+      try {
+        const response = await fetch(url, options);
+        const json = await response.json();
+        dispatch(addnowmovie(json.results));
+      } catch (error) {
+        console.error("Error fetching API data:", error);
+      }
+    };
 
-  const fetchapi = async () => {
-    const data = await fetch(url, options);
-    const json = await data.json();
-  
-    dispatch(addnowmovie(json.results));
-  };
+    fetchapi();
+  }, [dispatch]); // ✅ Added dispatch to the dependency array
 };
 
 export default useFetchApi;
