@@ -2,8 +2,13 @@ import React, { useRef } from "react";
 import lang from "../utils/languageconstants";
 import { useSelector } from "react-redux";
 import openaimy from "../utils/gptconstants";
+import { options } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { addGptMovies } from "../utils/toggleSlice";
 
 const Gptsearch = () => {
+  const dispatch = useDispatch();
+
   const langu = useSelector((state) => state.language.language);
   const currentLang = lang[langu] || lang["en"];
 
@@ -11,6 +16,18 @@ const Gptsearch = () => {
 
   const handelclick = async () => {
     console.log(serchtext.current.value);
+
+    const featchmovies = async (movie) => {
+      const data = await fetch(
+        "https://api.themoviedb.org/3/search/movie?query=" +
+          movie +
+          "&include_adult=false&language=en-US&page=1",
+        options
+      );
+      const json = await data.json();
+
+      return json.results;
+    };
 
     const qptQuiery =
       "Act as a Movie recommendation system and give me names of 5 movies based on the following query: " +
@@ -21,11 +38,20 @@ const Gptsearch = () => {
       messages: [{ role: "user", content: qptQuiery }],
       model: "gpt-4o-mini",
     });
-    if(!gptres.choices[0]?.message?.content){
+    if (!gptres.choices[0]?.message?.content) {
       console.log("No response from GPT");
       return;
     }
-    console.log(gptres.choices[0]?.message?.content);
+
+    const movies = gptres.choices[0]?.message?.content.split(",");
+
+    const promisedata = movies.map((movie) => featchmovies(movie));
+
+    const data = await Promise.all(promisedata);
+
+    const firstObjects = data.map((arr) => arr[0]);
+
+    dispatch(addGptMovies({movieNames:movies, moviesRes:firstObjects}));
   };
 
   return (
