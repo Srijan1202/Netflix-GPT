@@ -17,7 +17,7 @@ const SearchPage = () => {
 
   return (
     <div className='absolute flex flex-col justify-center items-center mt-56 w-screen z-10' onClick={Close}>
-      <div ref={toggleref} className=" h-3/6 w-2/6  rounded-lg flex flex-col justify-center items-center shadow-lg" onClick={(e) => e.stopPropagation()}>
+      <div ref={toggleref} className=" w-5/6 md:w-2/6  rounded-lg flex flex-col justify-center items-center shadow-lg" onClick={(e) => e.stopPropagation()}>
         <Gptsearch  />
         <GptRecommend />
       </div>

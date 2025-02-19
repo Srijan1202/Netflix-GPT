@@ -55,7 +55,7 @@ const Gptsearch = () => {
   };
 
   return (
-    <div className="flex justify-center items-center bg-red-600 h-20 w-full rounded-t-lg bg-opacity-80">
+    <div className="flex justify-center items-center bg-red-600 h-20  w-full rounded-t-lg bg-opacity-80">
       <form action="submit" onSubmit={(e) => e.preventDefault()}>
         <input
           ref={serchtext}

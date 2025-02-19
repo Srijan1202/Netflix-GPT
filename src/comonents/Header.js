@@ -56,7 +56,7 @@ const Header = () => {
       {/* bg-gradient-to-b from-black flex justify-between items-center h-28 */}
       <img src={img} alt="" className="w-40 ml-6 " />
       {user && (
-        <div className="flex justify-end mr-10 ">
+        <div className="flex justify-evenly md:justify-end mr-10 ">
           <select
             onChange={(e) => dispatch(setLanguage(e.target.value))}
             name="language"
