@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { addnowmovie } from "../utils/movieSlice";
 import { url, options } from "../utils/constants";
 
-const Usefetchapi = () => {
+const UseFetchApi = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,4 +18,4 @@ const Usefetchapi = () => {
   };
 };
 
-export default Usefetchapi;
+export default UseFetchApi;

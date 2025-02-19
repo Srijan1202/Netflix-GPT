@@ -1,4 +1,3 @@
-import React, { use, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Header from "./Header";
 import useFetchApi from "../hooks/useFetchApi";
